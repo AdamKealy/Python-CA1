@@ -1,41 +1,63 @@
 from flask import Flask, request, render_template
-import datetime
 
 app = Flask(__name__)
 
 
 @app.get("/")  # HTTP request:   GET  /
 def index():
-    return render_template("index.html",
-                           title="Welcome!",
-                           heading="Tell us about yourself",)
+    return render_template("home.html",
+                           title="Home Page",
+                           heading="",)
 
 
-@app.get("/showform")
-def display_form():
-    """
-        Retrieve the form.html file from the hard disk, and send it to the
-        browser.
-    """
-    return render_template("form.html",
-                           title="Welcome Form",
-                           heading="Please fill in this form",)
+@app.get("/showhome")
+def home():
+    return render_template("home.html",
+                            title="Home Page",
+                            heading="",)
+
+@app.get("/showPersonal")
+def personal():
+    return render_template("personal.html",
+                            title="Personal Page",
+                            heading="",)
+
+@app.get("/showCV")
+def cv():
+    return render_template("cv.html",
+                            title="CV Page",
+                            heading="",)
+
+@app.get("/showComputing")
+def computing():
+    return render_template("computing.html",
+                            title="Computing Page",
+                            heading="",)
+
+@app.get("/showInterests")
+def interests():
+    return render_template("interests.html",
+                            title="Interests Page",
+                            heading="",)
+                            
 
 
+"""
 @app.post("/processfeedback")
 def save_data():
-    """
+    
         Receive the data from the HTML form, then save it to a disk file, then respond
         with a nice friendly message to the awaiting browser.
 
         The following inputs are expected: first, last, and dob.
-    """
+    
     # python-name = html-name:
     the_feedback = request.form["feedback"]
     # So... now, use the python-names in your code:
     with open("comments.txt", "a") as sf:
         print(f"{the_feedback}", file=sf) 
-
+        return "Thanks for your feedback"
+"""
 
 if __name__ == "__main__":
     app.run(debug=True)
