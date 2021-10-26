@@ -3,7 +3,7 @@ from flask import Flask, request, render_template
 app = Flask(__name__)
 
 
-@app.get("/")  # HTTP request:   GET  /
+@app.get("/")
 def index():
     return render_template("home.html",
                            title="Home Page",
@@ -40,16 +40,13 @@ def interests():
                             title="Interests Page",
                             heading="",)
                             
-
-
-
 @app.post("/processfeedback")
 def save_data():
+    the_email = request.form["email"]
     the_feedback = request.form["feedback"]
     with open("comments.txt", "a") as sf:
-        print(f"{the_feedback}", file=sf) 
+        print(f"{the_email}, {the_feedback}", file=sf) 
         return render_template("home.html")
-
 
 if __name__ == "__main__":
     app.run(debug=True)
