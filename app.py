@@ -42,22 +42,14 @@ def interests():
                             
 
 
-"""
+
 @app.post("/processfeedback")
 def save_data():
-    
-        Receive the data from the HTML form, then save it to a disk file, then respond
-        with a nice friendly message to the awaiting browser.
-
-        The following inputs are expected: first, last, and dob.
-    
-    # python-name = html-name:
     the_feedback = request.form["feedback"]
-    # So... now, use the python-names in your code:
     with open("comments.txt", "a") as sf:
         print(f"{the_feedback}", file=sf) 
-        return "Thanks for your feedback"
-"""
+        return render_template("home.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
