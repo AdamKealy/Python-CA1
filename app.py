@@ -40,6 +40,23 @@ def interests():
                             title="Interests Page",
                             heading="Interests Page",)
 
+@app.get("/showAr")
+def ar():
+    return render_template("ar.html",
+                            title="Augmented Reality Page",
+                            heading="Augmented Reality Page",)
+
+@app.get("/showCloudComputing")
+def cloudComputing():
+    return render_template("cloud_computing.html",
+                            title="Cloud Computing Page",
+                            heading="Cloud Computing Page",)
+
+@app.get("/showEmbeddedSoftware")
+def embeddedSoftware():
+    return render_template("embedded_software.html",
+                            title="Embedded Software Page",
+                            heading="Embedded Software Page",)
                             
 @app.post("/processfeedback")
 def save_data():
